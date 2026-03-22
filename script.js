@@ -4,29 +4,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursorDot = document.getElementById("cursor-dot");
     const cursorOutline = document.getElementById("cursor-outline");
 
-    window.addEventListener("mousemove", (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
 
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
+    if (!isTouchDevice) {
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-    // Hover effects for links and buttons
-    const hoverables = document.querySelectorAll("a, button, .tilt-element, .hex-item, .bento-card");
-    hoverables.forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            document.body.classList.add("hover-cursor");
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
         });
-        el.addEventListener("mouseleave", () => {
-            document.body.classList.remove("hover-cursor");
+
+        // Hover effects for links and buttons
+        const hoverables = document.querySelectorAll("a, button, .tilt-element, .hex-item, .bento-card");
+        hoverables.forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                document.body.classList.add("hover-cursor");
+            });
+            el.addEventListener("mouseleave", () => {
+                document.body.classList.remove("hover-cursor");
+            });
         });
-    });
+    }
 
     // --- Background Canvas Matrix/Nodes Effect ---
     const canvas = document.getElementById("bg-canvas");
@@ -231,26 +236,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- 3D Tilt Effect for specific elements ---
-    const tiltCards = document.querySelectorAll('.tilt-element');
-    tiltCards.forEach(card => {
-        card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    if (!isTouchDevice) {
+        const tiltCards = document.querySelectorAll('.tilt-element');
+        tiltCards.forEach(card => {
+            card.addEventListener("mousemove", (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -15; // Max 15 degree rotation
+                const rotateY = ((x - centerX) / centerX) * 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.transition = `none`;
+            });
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -15; // Max 15 degree rotation
-            const rotateY = ((x - centerX) / centerX) * 15;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-            card.style.transition = `none`;
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.transition = `transform 0.5s ease`;
+            });
         });
-        
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            card.style.transition = `transform 0.5s ease`;
-        });
-    });
+    }
 });
