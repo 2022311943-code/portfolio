@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSIT Student Portfolio</title>
+    <!-- Modern Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Canvas and Ambient Lighting -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="ambient-light main-light"></div>
+    <div class="ambient-light secondary-light"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">IT<span class="highlight">.Sys</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">01. Home</a></li>
+            <li><a href="#about" class="nav-link">02. About</a></li>
+            <li><a href="#skills" class="nav-link">03. Skills</a></li>
+            <li><a href="#projects" class="nav-link">04. Projects</a></li>
+            <li><a href="#contact" class="nav-link">05. Contact</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section-padding">
+            <div class="hero-content reveal-up">
+                <p class="greeting code-font">System.out.println("Hello People!");</p>
+                <h1 class="glitch-title" data-text="I'm Mc. Kenzie Quiballo">I'm Mc. Kenzie Quiballo</h1>
+                <div class="role-wrapper">
+                    <span class="static-text">BSIT Student & </span>
+                    <span id="typing-text" class="highlight code-font"></span><span class="cursor">_</span>
+                </div>
+                <p class="hero-desc">Bridging the gap between imagination and technology. I specialize in building
+                    exceptional digital experiences and robust architectures.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary">
+                        <span class="btn-text">Execute_Projects</span>
+                        <div class="btn-particles"></div>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <span class="btn-text">Establish_Connection</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal-right">
+                <div class="tilt-element cube-container">
+                    <div class="cube code-ui">
+                        <div class="code-line">const <span class="keyword">student</span> = {</div>
+                        <div class="code-line indent">degree: <span class="string">"BSIT"</span>,</div>
+                        <div class="code-line indent">passion: <span class="string">"Development"</span>,</div>
+                        <div class="code-line indent">status: <span class="string">"Learning"</span>,</div>
+                        <div class="code-line indent">coffee: <span class="keyword">true</span></div>
+                        <div class="code-line">};</div>
+                    </div>
+                    <div class="glow-orb"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <h2 class="section-title reveal-up"><span class="title-num">02.</span> Inside the Machine</h2>
+
+            <div class="about-grid">
+                <div class="about-image-wrapper reveal-left tilt-element">
+                    <div class="image-frame glass-panel">
+                        <div class="placeholder-img">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <div class="frame-corners"></div>
+                    </div>
+                </div>
+
+                <div class="about-text glass-panel reveal-right">
+                    <div class="terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">about.exe</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p>I am a <span class="highlight">Bachelor of Science in Information Technology</span> student
+                            currently exploring the vast universe of software development, networking, and systems
+                            integration.</p>
+                        <p>My journey started with a simple curiosity about how things work behind the screen. Now, I
+                            design and build scalable, user-centric applications while constantly learning new
+                            frameworks and paradigms.</p>
+                        <p>When I'm not writing code, you can find me analyzing system logic or participating in tech
+                            communities.</p>
+
+                        <div class="stats-row mt-4">
+                            <div class="stat-item">
+                                <span class="stat-num" data-target="3">0</span>
+                                <span class="stat-label">Years of Studies</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num" data-target="15">0</span><span class="stat-plus">+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">∞</span>
+                                <span class="stat-label">Lines of Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section-padding">
+            <h2 class="section-title reveal-up align-center"><span class="title-num">03.</span> Tech Stack Matrix</h2>
+
+            <div class="skills-showcase reveal-up">
+                <div class="skill-category">
+                    <h3 class="code-font">Frontend</h3>
+                    <div class="hex-grid">
+                        <div class="hex-item" style="--clr: #e34f26;"><i class="fab fa-html5"></i><span>HTML</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #1572b6;"><i class="fab fa-css3-alt"></i><span>CSS</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #f7df1e;"><i class="fab fa-js"></i><span>JS</span></div>
+                        <div class="hex-item" style="--clr: #61dafb;"><i class="fab fa-react"></i><span>React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="code-font">Backend/Core</h3>
+                    <div class="hex-grid">
+                        <div class="hex-item" style="--clr: #3776ab;"><i class="fab fa-python"></i><span>Python</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #f89820;"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="hex-item" style="--clr: #00758f;"><i class="fas fa-database"></i><span>SQL</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #83cd29;"><i class="fab fa-node-js"></i><span>Node</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="code-font">Tools</h3>
+                    <div class="hex-grid">
+                        <div class="hex-item" style="--clr: #f05032;"><i class="fab fa-git-alt"></i><span>Git</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #2496ed;"><i class="fab fa-docker"></i><span>Docker</span>
+                        </div>
+                        <div class="hex-item" style="--clr: #000000; --text: #fff;"><i
+                                class="fab fa-github"></i><span>GitHub</span></div>
+                        <div class="hex-item" style="--clr: #02569b;"><i class="fas fa-terminal"></i><span>Bash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-padding">
+            <h2 class="section-title reveal-up"><span class="title-num">04.</span> System Architectures</h2>
+
+            <div class="bento-grid">
+                <!-- Project 1: Featured (Large) -->
+                <div class="bento-card featured glass-panel reveal-up" style="--grid-area: a;">
+                    <div class="card-content">
+                        <div class="project-top">
+                            <i class="fas fa-folder-open folder-icon"></i>
+                            <div class="project-links">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Campus Information System</h3>
+                        <p class="project-desc">A comprehensive full-stack solution designed for university
+                            administrators to manage student life cycles, automate enrollment processes, and handle
+                            scheduling conflicts.</p>
+                        <ul class="tech-list code-font">
+                            <li>Java</li>
+                            <li>Spring Boot</li>
+                            <li>MySQL</li>
+                            <li>Vue.js</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bento-card glass-panel reveal-up" style="--grid-area: b; transition-delay: 100ms;">
+                    <div class="card-content">
+                        <div class="project-top">
+                            <i class="fas fa-folder folder-icon"></i>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <h3 class="project-title">IoT Network Monitor</h3>
+                        <p class="project-desc">A real-time dashboard tracking node uptime, latency, and packet loss
+                            across IoT devices.</p>
+                        <ul class="tech-list code-font">
+                            <li>Python</li>
+                            <li>Socket.io</li>
+                            <li>React</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bento-card glass-panel reveal-up" style="--grid-area: c; transition-delay: 200ms;">
+                    <div class="card-content">
+                        <div class="project-top">
+                            <i class="fas fa-folder folder-icon"></i>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <h3 class="project-title">AlgoVisualizer</h3>
+                        <p class="project-desc">Interactive learning tool that animates sorting and pathfinding
+                            algorithms step-by-step.</p>
+                        <ul class="tech-list code-font">
+                            <li>Vanilla JS</li>
+                            <li>CSS3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bento-card glass-panel reveal-up" style="--grid-area: d; transition-delay: 300ms;">
+                    <div class="card-content">
+                        <div class="project-top">
+                            <i class="fas fa-folder folder-icon"></i>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <h3 class="project-title">CyberSec CTF Platform</h3>
+                        <p class="project-desc">Hosting platform for local Capture The Flag ethical hacking
+                            competitions.</p>
+                        <ul class="tech-list code-font">
+                            <li>Node.js</li>
+                            <li>Docker</li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding">
+            <h2 class="section-title reveal-up align-center"><span class="title-num">05.</span> Initiate Protocol</h2>
+
+            <div class="contact-container glass-panel reveal-up">
+                <div class="contact-info">
+                    <h3>Looking for a Developer?</h3>
+                    <p>My inbox is always open. Whether you have a question about IT, want to collaborate on a project,
+                        or just want to say hi, I'll try my best to get back to you!</p>
+
+                    <div class="contact-methods mt-4">
+                        <a href="mailto:hello@example.com" class="contact-method">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <span>hello@example.com</span>
+                        </a>
+                        <div class="contact-method">
+                            <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                            <span>Earth, Milky Way</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="input-container">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name">Name_Alias</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">Email_Address</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="input-container">
+                        <textarea id="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Transmission_Data</label>
+                        <div class="input-line"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary w-full">
+                        <span class="btn-text">Transmit_Message()</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Built with syntax & caffeine by <span class="highlight">Mc. Kenzie Quiballo</span></p>
+            <p class="code-font small-text">&copy; 2026 BSIT Portfolio <span class="status-indicator"></span> System
+                Online</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
