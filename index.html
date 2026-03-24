@@ -7,7 +7,7 @@
     <title>BSIT Student Portfolio</title>
     <!-- Modern Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Outfit:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Nunito:wght@400;600;700;800&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,20 +24,33 @@
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
 
+    <!-- Cute Transition Overlay -->
+    <div id="cute-transition-overlay" class="cute-transition-overlay">
+        <div class="overlay-content">
+            <div class="sparkle-icon">✨</div>
+            <h2 id="overlay-text">Magical Transformation!</h2>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="logo">IT<span class="highlight">.Sys</span></div>
+        <div class="logo swap-text" data-cute-text="Cute<span class='highlight'>.Me</span>" data-original-text="IT<span class='highlight'>.Sys</span>">IT<span class="highlight">.Sys</span></div>
         <ul class="nav-links">
-            <li><a href="#home" class="nav-link active">01. Home</a></li>
-            <li><a href="#about" class="nav-link">02. About</a></li>
-            <li><a href="#skills" class="nav-link">03. Skills</a></li>
-            <li><a href="#projects" class="nav-link">04. Projects</a></li>
-            <li><a href="#contact" class="nav-link">05. Contact</a></li>
+            <li><a href="#home" class="nav-link active swap-text" data-cute-text="✨ Home" data-original-text="01. Home">01. Home</a></li>
+            <li><a href="#about" class="nav-link swap-text" data-cute-text="🌸 About" data-original-text="02. About">02. About</a></li>
+            <li><a href="#skills" class="nav-link swap-text" data-cute-text="🎀 Skills" data-original-text="03. Skills">03. Skills</a></li>
+            <li><a href="#projects" class="nav-link swap-text" data-cute-text="💕 Projects" data-original-text="04. Projects">04. Projects</a></li>
+            <li><a href="#contact" class="nav-link swap-text" data-cute-text="💌 Contact" data-original-text="05. Contact">05. Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="nav-controls" style="display: flex; gap: 20px; align-items: center;">
+            <button id="theme-toggle" class="theme-toggle" title="Toggle Magical Mode" style="background: transparent; border: none; color: var(--text-main); font-size: 1.2rem;">
+                <i class="fas fa-magic"></i>
+            </button>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </nav>
 
@@ -45,7 +58,7 @@
         <!-- Hero Section -->
         <section id="home" class="hero section-padding">
             <div class="hero-content reveal-up">
-                <p class="greeting code-font">System.out.println("Hello World");</p>
+                <p class="greeting code-font swap-text" data-cute-text="*ੈ✩‧₊˚ Hello World! *ੈ✩‧₊˚" data-original-text="System.out.println(&quot;Hello World&quot;);">System.out.println("Hello World");</p>
                 <h1 class="glitch-title" data-text="I'm Mc. Kenzie Quiballo">I'm Mc. Kenzie Quiballo</h1>
                 <div class="role-wrapper">
                     <span class="static-text">BSIT Student & </span>
@@ -55,11 +68,11 @@
                     exceptional digital experiences and robust architectures.</p>
                 <div class="btn-group">
                     <a href="#projects" class="btn btn-primary">
-                        <span class="btn-text">Execute_Projects</span>
+                        <span class="btn-text swap-text" data-cute-text="View Projects 💕" data-original-text="Execute_Projects">Execute_Projects</span>
                         <div class="btn-particles"></div>
                     </a>
                     <a href="#contact" class="btn btn-outline">
-                        <span class="btn-text">Establish_Connection</span>
+                        <span class="btn-text swap-text" data-cute-text="Contact Me ✨" data-original-text="Establish_Connection">Establish_Connection</span>
                     </a>
                 </div>
             </div>
@@ -81,7 +94,7 @@
 
         <!-- About Section -->
         <section id="about" class="about section-padding">
-            <h2 class="section-title reveal-up"><span class="title-num">02.</span> Inside the Machine</h2>
+            <h2 class="section-title reveal-up"><span class="title-num swap-text" data-cute-text="🌸 " data-original-text="02. ">02. </span><span class="swap-text" data-cute-text="About Me" data-original-text="Inside the Machine">Inside the Machine</span></h2>
 
             <div class="about-grid">
                 <div class="about-image-wrapper reveal-left tilt-element">
@@ -98,7 +111,7 @@
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
-                        <span class="terminal-title">about.exe</span>
+                        <span class="terminal-title swap-text" data-cute-text="About Me 🎀" data-original-text="about.exe">about.exe</span>
                     </div>
                     <div class="terminal-body">
                         <p>I am a <span class="highlight">Bachelor of Science in Information Technology</span> student
@@ -131,7 +144,7 @@
 
         <!-- Skills Section -->
         <section id="skills" class="skills section-padding">
-            <h2 class="section-title reveal-up align-center"><span class="title-num">03.</span> Tech Stack Matrix</h2>
+            <h2 class="section-title reveal-up align-center"><span class="title-num swap-text" data-cute-text="🎀 " data-original-text="03. ">03. </span><span class="swap-text" data-cute-text="Magical Skills" data-original-text="Tech Stack Matrix">Tech Stack Matrix</span></h2>
 
             <div class="skills-showcase reveal-up">
                 <div class="skill-category">
@@ -178,7 +191,7 @@
 
         <!-- Projects Section -->
         <section id="projects" class="projects section-padding">
-            <h2 class="section-title reveal-up"><span class="title-num">04.</span> System Architectures</h2>
+            <h2 class="section-title reveal-up"><span class="title-num swap-text" data-cute-text="✨ " data-original-text="04. ">04. </span><span class="swap-text" data-cute-text="Cute Projects" data-original-text="System Architectures">System Architectures</span></h2>
 
             <div class="bento-grid">
                 <!-- Project 1: Featured (Large) -->
@@ -261,7 +274,7 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact section-padding">
-            <h2 class="section-title reveal-up align-center"><span class="title-num">05.</span> Initiate Protocol</h2>
+            <h2 class="section-title reveal-up align-center"><span class="title-num swap-text" data-cute-text="💌 " data-original-text="05. ">05. </span><span class="swap-text" data-cute-text="Let's Chat!" data-original-text="Initiate Protocol">Initiate Protocol</span></h2>
 
             <div class="contact-container glass-panel reveal-up">
                 <div class="contact-info">
@@ -304,7 +317,7 @@
                         <div class="input-line"></div>
                     </div>
                     <button type="button" class="btn btn-primary w-full">
-                        <span class="btn-text">Transmit_Message()</span>
+                        <span class="btn-text swap-text" data-cute-text="Send Message 💌" data-original-text="Transmit_Message()">Transmit_Message()</span>
                     </button>
                 </form>
             </div>

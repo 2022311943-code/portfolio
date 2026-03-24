@@ -5,6 +5,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursorOutline = document.getElementById("cursor-outline");
 
 
+    // --- Cute Mode Theme Logic ---
+    const themeToggle = document.getElementById("theme-toggle");
+    const transitionOverlay = document.getElementById("cute-transition-overlay");
+    const overlayText = document.getElementById("overlay-text");
+    
+    function toggleText(isCute) {
+        const swapElements = document.querySelectorAll('.swap-text');
+        swapElements.forEach(el => {
+            el.innerHTML = isCute ? el.getAttribute('data-cute-text') : el.getAttribute('data-original-text');
+        });
+    }
+
+    // Check localStorage for preferred theme
+    if (localStorage.getItem("cute-mode") === "true") {
+        document.body.classList.add("cute-mode");
+        toggleText(true);
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const isCurrentlyCute = document.body.classList.contains("cute-mode");
+            
+            // Start magical transition
+            transitionOverlay.classList.add("active");
+            overlayText.innerText = isCurrentlyCute ? "Restoring System..." : "Magical Transformation! ✨";
+            
+            // Wait for overlay to cover screen
+            setTimeout(() => {
+                if (isCurrentlyCute) {
+                    document.body.classList.remove("cute-mode");
+                    localStorage.setItem("cute-mode", "false");
+                    toggleText(false);
+                } else {
+                    document.body.classList.add("cute-mode");
+                    localStorage.setItem("cute-mode", "true");
+                    toggleText(true);
+                }
+                
+                // Optional: resize canvas to force redraw/recalculate
+                if (typeof resizeCanvas === 'function') resizeCanvas(); 
+                
+                // Allow the screen update to paint before sliding away the overlay
+                setTimeout(() => {
+                    transitionOverlay.classList.remove("active");
+                }, 100);
+                
+            }, 800); // Matches the CSS transition duration
+        });
+    }
+
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
     if (!isTouchDevice) {
@@ -58,19 +108,50 @@ document.addEventListener("DOMContentLoaded", () => {
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
+            this.type = Math.random() > 0.5 ? 'star' : 'bubble';
+            this.rotation = Math.random() * Math.PI;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.02;
         }
         update() {
             this.x += this.vx;
             this.y += this.vy;
+            this.rotation += this.rotationSpeed;
 
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
         }
         draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(0, 240, 255, 0.5)";
-            ctx.fill();
+            const isCute = document.body.classList.contains("cute-mode");
+            
+            if (isCute) {
+                // Draw cute elements (stars and bubbles)
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                
+                if (this.type === 'star') {
+                    ctx.beginPath();
+                    for(let i=0; i<5; i++) {
+                        ctx.lineTo(Math.cos((18+i*72)/180*Math.PI)*this.radius*3, -Math.sin((18+i*72)/180*Math.PI)*this.radius*3);
+                        ctx.lineTo(Math.cos((54+i*72)/180*Math.PI)*this.radius*1.5, -Math.sin((54+i*72)/180*Math.PI)*this.radius*1.5);
+                    }
+                    ctx.closePath();
+                    ctx.fillStyle = "rgba(255, 215, 0, 0.6)"; // gold star
+                    ctx.fill();
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.radius * 2, 0, Math.PI * 2);
+                    ctx.fillStyle = "rgba(255, 126, 179, 0.4)"; // pink bubble
+                    ctx.fill();
+                }
+                ctx.restore();
+            } else {
+                // Original IT dot
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(0, 240, 255, 0.5)";
+                ctx.fill();
+            }
         }
     }
 
@@ -90,7 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < connectionDistance) {
+                const isCute = document.body.classList.contains("cute-mode");
+                if (!isCute && distance < connectionDistance) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(0, 240, 255, ${1 - distance/connectionDistance})`;
                     ctx.lineWidth = 0.5;

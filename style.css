@@ -921,3 +921,170 @@ h1, h2, h3, h4, h5, h6 {
     
     .footer { padding: 30px 20px; }
 }
+
+/* =========================================
+   CUTE MODE THEME 🌸✨🎀
+   ========================================= */
+body.cute-mode {
+    --bg-color: #2b1f31; /* lavender blush */
+    --surface-color: rgba(255, 182, 193, 0.08);
+    --surface-light: rgba(255, 182, 193, 0.15);
+    --primary: #ff85b3; /* cute pink */
+    --secondary: #ffc4d9; /* lighter pink */
+    --accent: #ffd166; /* gold star */
+    --text-main: #fff0f5;
+    --text-muted: #d4b8cc;
+    --glass-border: rgba(255, 133, 179, 0.25);
+    
+    --font-sans: 'Nunito', sans-serif;
+    --font-code: 'Nunito', sans-serif; /* No monospace for cute mode */
+}
+
+/* Cute Transition Overlay (Magical Spotlight) */
+.cute-transition-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, #ffc4d9 0%, #ff85b3 40%, #2b1f31 100%);
+    z-index: 99999;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.cute-transition-overlay.active {
+    clip-path: circle(150% at 50% 50%);
+    pointer-events: all;
+}
+
+.overlay-content {
+    text-align: center;
+    color: #fff0f5;
+    font-size: 2rem;
+    font-family: 'Nunito', sans-serif;
+    text-shadow: 0 4px 15px rgba(255, 133, 179, 0.8);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.cute-transition-overlay.active .overlay-content {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.3s;
+}
+
+.sparkle-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Cute Mode Specific Overrides */
+.cute-mode .glass-panel {
+    border-radius: 25px;
+    box-shadow: 0 8px 32px 0 rgba(255, 133, 179, 0.15);
+    background: var(--surface-color);
+}
+
+.cute-mode .bento-card {
+    border-radius: 25px;
+}
+
+.cute-mode .hex-item {
+    clip-path: none;
+    border-radius: 50%;
+    width: 110px; height: 110px;
+}
+
+.cute-mode .hex-item::before {
+    clip-path: none;
+    border-radius: 50%;
+}
+
+.cute-mode #cursor-dot {
+    background-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.cute-mode #cursor-outline {
+    border-color: var(--primary);
+    border-radius: 50%;
+}
+
+.cute-mode .hover-cursor #cursor-outline {
+    background-color: rgba(255, 133, 179, 0.2);
+    transform: scale(1.5);
+}
+
+.cute-mode .code-ui {
+    background: rgba(43, 31, 49, 0.8);
+    border-radius: 20px;
+    color: var(--text-main);
+}
+
+.cute-mode .code-line {
+    color: var(--text-main);
+}
+
+.cute-mode .glow-orb {
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+
+.cute-mode .btn {
+    border-radius: 30px;
+}
+
+.cute-mode .btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 133, 179, 0.4);
+    border: none;
+}
+
+.cute-mode .btn-primary::before {
+    background: rgba(255, 133, 179, 0.2);
+}
+
+.cute-mode .btn-primary:hover {
+    box-shadow: 0 8px 20px rgba(255, 133, 179, 0.6);
+}
+
+.cute-mode .nav-link::before {
+    height: 3px;
+    border-radius: 3px;
+}
+
+.cute-mode .section-title::after, 
+.cute-mode .align-center::after, 
+.cute-mode .align-center::before {
+    height: 3px;
+    border-radius: 3px;
+    background: var(--primary);
+}
+
+.cute-mode .terminal-header {
+    background: rgba(255, 133, 179, 0.2);
+    border-radius: 25px 25px 0 0;
+}
+
+.cute-mode .ambient-light.main-light {
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+
+.cute-mode .ambient-light.secondary-light {
+    background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+}
+
+.cute-mode .theme-toggle {
+    color: var(--primary) !important;
+}
+
+/* Animations Trigger Overrides */
+.cute-mode .reveal-up { transform: translateY(30px); }
+.cute-mode .reveal-left { transform: translateX(-30px); }
+.cute-mode .reveal-right { transform: translateX(30px); }
+
+
