@@ -1083,8 +1083,45 @@ body.cute-mode {
 }
 
 /* Animations Trigger Overrides */
-.cute-mode .reveal-up { transform: translateY(30px); }
-.cute-mode .reveal-left { transform: translateX(-30px); }
-.cute-mode .reveal-right { transform: translateX(30px); }
+.cute-mode .reveal-up { transform: none; }
+.cute-mode .reveal-left { transform: none; }
+.cute-mode .reveal-right { transform: none; }
+
+
+
+
+/* Mobile Fixes for Cute Mode */
+@media (max-width: 768px) {
+    .cute-mode .hex-item {
+        width: 80px;
+        height: 80px;
+    }
+    .cute-mode .hex-item i {
+        font-size: 20px;
+    }
+    .cute-mode .hex-item span {
+        font-size: 0.7rem;
+    }
+    .cute-mode .section-title::after, 
+    .cute-mode .align-center::after, 
+    .cute-mode .align-center::before {
+        width: 0 !important;
+        flex-grow: 1 !important;
+        margin: 0 10px;
+    }
+    .cute-mode .terminal-header {
+        margin: -30px -30px 15px -30px !important;
+    }
+    .overlay-content {
+        font-size: 1.5rem;
+        padding: 0 20px;
+    }
+    .sparkle-icon {
+        font-size: 4rem;
+    }
+    .cute-mode .contact-container {
+        padding: 20px;
+    }
+}
 
 
